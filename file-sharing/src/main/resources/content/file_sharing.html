@@ -15,6 +15,7 @@
        onclick="FolderOperate.removeItem()">删除</a>
 </div>
 <script>
+
     var FolderOperate = {
         showAddDialog: {},
         submitAddFolder: {},
@@ -99,18 +100,14 @@
         var params = {};
         params.password = $('#password').val();
         params.folderName = $('#name').val();
-        $.ajax({
+        $.jsonRequest({
             url: "/folders",
             type: 'POST',
-            contentType: 'application/json',
             data: JSON.stringify(params),
             success: function (data) {
                 $.messager.alert("提示", data, "info");
                 $('#dg').datagrid('reload');
                 $('#addFolderDialog').dialog('close');
-            },
-            error: function (data) {
-                $.messager.alert("提示", JSON.parse(data.responseText).error, "warning");
             }
         });
     };
