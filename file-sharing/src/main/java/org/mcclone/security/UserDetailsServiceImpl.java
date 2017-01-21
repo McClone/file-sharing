@@ -2,7 +2,6 @@ package org.mcclone.security;
 
 import org.mcclone.domain.entity.User;
 import org.mcclone.domain.repositories.UserRepository;
-import org.mcclone.security.UserPrincipal;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.core.GrantedAuthority;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;

@@ -1,7 +1,7 @@
 <!DOCTYPE html>
-<html lang="en">
+<html xmlns:th="http://www.thymeleaf.org">
 <head>
-    <meta charset="UTF-8">
+    <meta http-equiv="Content-Type" content="text/html; charset=UTF-8"/>
     <title>首页</title>
     <script type="text/javascript" src="/style/jquery-easyui-1.5.1/jquery.min.js"></script>
     <link rel="stylesheet" href="/style/bootstrap/3.3.0/css/bootstrap.min.css"/>
@@ -40,7 +40,7 @@
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <form id="logout_form" action="/logout" method="get" hidden></form>
+                <form id="logout_form" action="/logout" method="get" hidden="hidden"></form>
                 <a href="#" onclick="$('#logout_form').submit();" id="logout_btn">
                     <span class="glyphicon glyphicon-remove-sign"></span>
                     注销
@@ -50,9 +50,12 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="/login" id="login_btn">
+                <a th:if="${username == null}" href="/login" id="login_btn">
                     <span class="glyphicon glyphicon-user"></span>
                     登录
+                </a>
+                <a th:if="${username != null}" href="#">
+                    <span class="glyphicon glyphicon-user" th:text="${username}"></span>
                 </a>
             </li>
         </ul>
