@@ -5,8 +5,6 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.servlet.ModelAndView;
 
 /**
  * Created by mcclone on 17-1-11.
@@ -23,8 +21,4 @@ public class IndexController {
         return "/index";
     }
 
-    @GetMapping("/nav/{viewName}")
-    public ModelAndView navView(@PathVariable String viewName) {
-        return new ModelAndView("/" + viewName);
-    }
 }

@@ -15,15 +15,84 @@
        onclick="FolderOperate.removeItem()">删除</a>
 </div>
 <script>
-    $(function () {
-    });
-
     var FolderOperate = {
         showAddDialog: {},
         submitAddFolder: {},
         removeItem: {},
         showFileItemFmt: {},
         showFileItemDialog: {},
+        initFileItemDialog: {},
+        validatePassword: {}
+    };
+
+    var FileItemOperate = {
+        downloadFile: function (fileItemId) {
+            window.open("fileItems/download?fileItemId=" + fileItemId);
+        },
+        downloadFileFmt: function (value, row, index) {
+            return "<a href='#' onclick='FileItemOperate.downloadFile(\"" + row.id + "\");'>下载</a>";
+        },
+        initFileItemDialog: function (folderId) {
+            $('#file_item_dg').datagrid({
+                method: 'get',
+                fitColumns: true,
+                rownumbers: true,
+                idField: 'id',
+                singleSelect: true,
+                border: false,
+                pagination: true,
+                pageNumber: 1,
+                pageSize: 10,
+                fit: true,
+                url: '/fileItems',
+                queryParams: {folderId: folderId},
+                columns: [[
+                    {field: 'fileName', title: '文件名称', width: 100},
+                    {field: 'filePath', title: '文件下载', width: 100, formatter: FileItemOperate.downloadFileFmt}
+                ]]
+            });
+            $('#add_file_form').form({
+                success: function (data) {
+                    $('#add_file_form').form('reset');
+                    $('#file_item_dg').datagrid('reload');
+                    $.messager.alert('Info', data, 'info');
+                }
+            });
+        }
+    };
+
+    FolderOperate.validatePassword = function (folderId, password) {
+        $.ajax({
+            url: '/folders/validate/' + folderId,
+            type: 'POST',
+            data: {password: password},
+            success: function (data) {
+                if (data) {
+                    $('#folderPassDialog').dialog('destroy');
+                    $('<div id="fileItemDialog">文件夹详情</div>').dialog({
+                        title: '文件夹详情',
+                        width: 1000,
+                        height: 500,
+                        closed: false,
+                        cache: false,
+                        maximizable: true,
+                        href: '/content/file_item_dialog.html',
+                        modal: true,
+                        onLoad: function () {
+                            FileItemOperate.initFileItemDialog(folderId);
+                        },
+                        onClose: function () {
+                            $('#fileItemDialog').dialog('destroy');
+                        }
+                    });
+                } else {
+                    $.messager.alert("提示", "密码错误", "warning");
+                }
+            },
+            error: function (data) {
+                $.messager.alert("提示", JSON.parse(data.responseText).error, "warning");
+            }
+        });
     };
 
     FolderOperate.submitAddFolder = function () {
@@ -54,7 +123,7 @@
             closed: false,
             cache: false,
             maximizable: true,
-            href: '/content/folder_add.jsp',
+            href: '/content/folder_add.html',
             modal: true,
             buttons: [{
                 text: '保存',
@@ -67,10 +136,8 @@
     FolderOperate.removeItem = function () {
         var data = $('#dg').datagrid('getSelected');
         $.ajax({
-            url: "/folders",
+            url: "/folders/" + data.id,
             type: 'DELETE',
-            contentType: 'application/json',
-            data: JSON.stringify(data),
             success: function (data) {
                 $.messager.alert("提示", "删除成功", "info");
                 $('#dg').datagrid('reload');
@@ -79,19 +146,23 @@
     };
 
     FolderOperate.showFileItemDialog = function (folderId) {
-        $('<div id="fileItemDialog">文件夹详情</div>').dialog({
-            title: '文件夹详情',
+        $('<div id="folderPassDialog">密码验证</div>').dialog({
+            title: '密码验证',
             width: 1000,
             height: 500,
             closed: false,
             cache: false,
             maximizable: true,
-            href: '/fileItems/view?folderId=' + folderId,
+            href: '/content/fold_password.html',
             modal: true,
-            onClose: function () {
-                $('#fileItemDialog').dialog('destroy');
+            onLoad: function () {
+                $('#passBtn').bind('click', function () {
+                    FolderOperate.validatePassword(folderId, $('#password').val());
+
+                });
             }
         });
+
     };
 
     FolderOperate.showFileItemFmt = function (value, row, index) {

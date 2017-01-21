@@ -11,6 +11,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Sort;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
+import org.springframework.util.Assert;
 import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
@@ -36,9 +37,9 @@ public class FolderController {
         return new ResponseEntity<>(EasyUIGenerator.createEasyUIPage(folderPage, folderViewMapper), HttpStatus.OK);
     }
 
-    @DeleteMapping
-    public ResponseEntity<String> remove(@RequestBody Folder folder) {
-        this.folderService.remove(folder);
+    @DeleteMapping("/{id}")
+    public ResponseEntity<String> remove(@PathVariable String id) {
+        this.folderService.remove(id);
         log.info("删除成功");
         return ResponseEntity.ok("删除成功");
     }
@@ -50,22 +51,11 @@ public class FolderController {
         return ResponseEntity.ok("新增成功");
     }
 
-//    @GetMapping
-//    public ResponseEntity queryPage(EasyUIPageRequest pageRequest) {
-//        RestTemplate restTemplate = new RestTemplate();
-//        String url = ServletUriComponentsBuilder
-//                .fromCurrentContextPath()
-//                .path("/api/folders")
-//                .queryParam("page", pageRequest.getPage() - 1)
-//                .queryParam("size", pageRequest.getRows()).toUriString();
-//        logger.info(url);
-//        ResponseEntity<PagedResources> responseEntity = restTemplate.getForEntity(url, PagedResources.class);
-//        PagedResources pagedResources = responseEntity.getBody();
-//
-//        EasyUIPage easyUIPage = new EasyUIPage();
-//        easyUIPage.setRows(pagedResources.getContent());
-//        easyUIPage.setTotal(pagedResources.getMetadata().getTotalElements());
-//
-//        return new ResponseEntity<>(easyUIPage, HttpStatus.OK);
-//    }
+    @PostMapping("/validate/{id}")
+    public ResponseEntity validatePassword(@PathVariable String id, String password) {
+        Assert.hasText(password);
+        boolean validate = folderService.validatePassword(id, password);
+        return validate ? ResponseEntity.ok(true) : ResponseEntity.ok(false);
+    }
+
 }

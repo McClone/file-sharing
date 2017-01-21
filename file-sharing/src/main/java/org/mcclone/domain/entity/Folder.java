@@ -27,7 +27,7 @@ public class Folder extends AuditGenerator implements Serializable {
     private String folderName;
 
     @NotEmpty
-    @Column(name = "password")
+    @Column(name = "password", nullable = false)
     private String password;
 
     @CreatedBy

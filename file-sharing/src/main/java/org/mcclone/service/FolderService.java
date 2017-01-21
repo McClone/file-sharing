@@ -13,6 +13,7 @@ public interface FolderService {
 
     void save(Folder folder);
 
-    void remove(Folder folder);
+    void remove(String folderId);
 
+    boolean validatePassword(String folderId, String password);
 }
