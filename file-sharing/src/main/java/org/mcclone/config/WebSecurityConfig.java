@@ -40,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .anyRequest()
                 .authenticated();
-//        http.formLogin().loginPage("/login");
+        http.formLogin().loginPage("/login");
         http.csrf().disable();
         http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"));
     }

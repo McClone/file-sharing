@@ -23,24 +23,6 @@
             });
             $('.menu-list li:first a.content').trigger('click');
         });
-        function showLoginDialog() {
-            $('<div id="loginDialog">登录</div>').dialog({
-                title: '登录',
-                width: 600,
-                height: 300,
-                closed: false,
-                cache: false,
-                maximizable: true,
-                href: '/content/login.html',
-                modal: true,
-                buttons: [{
-                    text: '关闭',
-                    handler: function () {
-                        $('#loginDialog').dialog('close');
-                    }
-                }]
-            });
-        }
     </script>
 </head>
 <body>
@@ -68,7 +50,7 @@
         </ul>
         <ul class="nav navbar-nav navbar-right">
             <li>
-                <a href="/content/login.html" id="login_btn">
+                <a href="/login" id="login_btn">
                     <span class="glyphicon glyphicon-user"></span>
                     登录
                 </a>

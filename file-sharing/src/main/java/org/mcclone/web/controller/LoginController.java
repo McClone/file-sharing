@@ -19,16 +19,4 @@ public class LoginController {
         return new ModelAndView("/login");
     }
 
-//    @PostMapping
-//    public ResponseEntity<String> login(HttpServletRequest request, String username, String password) {
-//        try {
-//            request.login(username, password);
-//        } catch (ServletException e) {
-//            e.printStackTrace();
-//            log.error(e.getMessage());
-//            return new ResponseEntity<>(e.getMessage(), HttpStatus.FORBIDDEN);
-//        }
-//        return new ResponseEntity<>("登录成功", HttpStatus.OK);
-//    }
-
 }

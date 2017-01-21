@@ -1,4 +1,4 @@
-package org.mcclone.service.impl;
+package org.mcclone.security;
 
 import org.mcclone.domain.entity.User;
 import org.mcclone.domain.repositories.UserRepository;
@@ -30,6 +30,9 @@ public class UserDetailsServiceImpl implements UserDetailsService {
     @Override
     public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
         User user = userRepository.findByUsername(username);
+        if (user == null) {
+            throw new UsernameNotFoundException("不存在此帐号");
+        }
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority("USER");
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         grantedAuthorities.add(authority);
