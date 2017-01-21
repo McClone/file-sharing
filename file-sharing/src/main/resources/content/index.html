@@ -1,0 +1,82 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>首页</title>
+    <script type="text/javascript" src="/style/jquery-easyui-1.5.1/jquery.min.js"></script>
+    <link rel="stylesheet" href="/style/bootstrap/3.3.0/css/bootstrap.min.css"/>
+    <link rel="stylesheet" href="/style/bootstrap/3.3.0/css/bootstrap-theme.min.css"/>
+    <script src="/style/bootstrap/3.3.0/js/bootstrap.min.js"></script>
+    <link rel="stylesheet" type="text/css" href="/style/jquery-easyui-1.5.1/themes/default/easyui.css"/>
+    <link rel="stylesheet" type="text/css" href="/style/jquery-easyui-1.5.1/themes/icon.css"/>
+    <script type="text/javascript" src="/style/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
+    <script type="text/javascript" src="/style/jquery-easyui-1.5.1/locale/easyui-lang-zh_CN.js"></script>
+    <script>
+        $(function () {
+            $(".content").on('click', function (e) {
+                $('.menu-list li.active').removeClass("active");
+                $(this).parent().addClass("active");
+                $('#content').panel({
+                    href: '/content/' + $(this).attr('id') + '.html'
+                });
+            });
+            $('.menu-list li:first a.content').trigger('click');
+        });
+        function showLoginDialog() {
+            $('<div id="loginDialog">登录</div>').dialog({
+                title: '登录',
+                width: 600,
+                height: 300,
+                closed: false,
+                cache: false,
+                maximizable: true,
+                href: '/content/login.html',
+                modal: true,
+                buttons: [{
+                    text: '关闭',
+                    handler: function () {
+                        $('#loginDialog').dialog('close');
+                    }
+                }]
+            });
+        }
+    </script>
+</head>
+<body>
+<nav class="navbar navbar-default" role="navigation">
+    <div class="container-fluid">
+        <div class="navbar-header">
+            <a class="navbar-brand" href="#">McClone</a>
+        </div>
+        <div>
+            <ul class="nav navbar-nav menu-list">
+                <li><a href="#" id="file_sharing" class="content">文件共享</a></li>
+                <li><a href="#" id="user" class="content">用户管理</a></li>
+                <li><a href="#" id="resource" class="content">资源管理</a></li>
+            </ul>
+        </div>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <form id="logout_form" action="/logout" method="get" hidden></form>
+                <a href="#" onclick="$('#logout_form').submit();" id="logout_btn">
+                    <span class="glyphicon glyphicon-remove-sign"></span>
+                    注销
+                </a>
+
+            </li>
+        </ul>
+        <ul class="nav navbar-nav navbar-right">
+            <li>
+                <a href="/content/login.html" id="login_btn">
+                    <span class="glyphicon glyphicon-user"></span>
+                    登录
+                </a>
+            </li>
+        </ul>
+
+    </div>
+</nav>
+<div id="content" class="easyui-panel" data-options="fit:true,border:false">
+</div>
+</body>
+</html>

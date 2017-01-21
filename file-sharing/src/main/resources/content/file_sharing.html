@@ -1,0 +1,101 @@
+<table id="dg" class="easyui-datagrid" title="文件夹"
+       data-options="toolbar:'#toolbar',fitColumns:true,idField:'id',rownumbers:true,url:'/folders',singleSelect:true,method:'get',pagination:true,pageNumber:1,pageSize:10">
+    <thead>
+    <tr>
+        <th data-options="field:'folderName',width:100,formatter:FolderOperate.showFileItemFmt">文件夹名称</th>
+        <th data-options="field:'createUsername',width:100">创建人</th>
+        <th data-options="field:'createdDate',width:100">创建时间</th>
+    </tr>
+    </thead>
+</table>
+<div id="toolbar" style="display: none;">
+    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-edit',plain:true"
+       onclick="FolderOperate.showAddDialog()">新增</a>
+    <a href="#" class="easyui-linkbutton" data-options="iconCls:'icon-help',plain:true"
+       onclick="FolderOperate.removeItem()">删除</a>
+</div>
+<script>
+    $(function () {
+    });
+
+    var FolderOperate = {
+        showAddDialog: {},
+        submitAddFolder: {},
+        removeItem: {},
+        showFileItemFmt: {},
+        showFileItemDialog: {},
+    };
+
+    FolderOperate.submitAddFolder = function () {
+        var params = {};
+        params.password = $('#password').val();
+        params.folderName = $('#name').val();
+        $.ajax({
+            url: "/folders",
+            type: 'POST',
+            contentType: 'application/json',
+            data: JSON.stringify(params),
+            success: function (data) {
+                $.messager.alert("提示", data, "info");
+                $('#dg').datagrid('reload');
+                $('#addFolderDialog').dialog('close');
+            },
+            error: function (data) {
+                $.messager.alert("提示", JSON.parse(data.responseText).error, "warning");
+            }
+        });
+    };
+
+    FolderOperate.showAddDialog = function () {
+        $('<div id="addFolderDialog">新增</div>').dialog({
+            title: '新增',
+            width: 600,
+            height: 300,
+            closed: false,
+            cache: false,
+            maximizable: true,
+            href: '/content/folder_add.jsp',
+            modal: true,
+            buttons: [{
+                text: '保存',
+                iconCls: 'icon-edit',
+                handler: FolderOperate.submitAddFolder
+            }]
+        });
+    };
+
+    FolderOperate.removeItem = function () {
+        var data = $('#dg').datagrid('getSelected');
+        $.ajax({
+            url: "/folders",
+            type: 'DELETE',
+            contentType: 'application/json',
+            data: JSON.stringify(data),
+            success: function (data) {
+                $.messager.alert("提示", "删除成功", "info");
+                $('#dg').datagrid('reload');
+            }
+        });
+    };
+
+    FolderOperate.showFileItemDialog = function (folderId) {
+        $('<div id="fileItemDialog">文件夹详情</div>').dialog({
+            title: '文件夹详情',
+            width: 1000,
+            height: 500,
+            closed: false,
+            cache: false,
+            maximizable: true,
+            href: '/fileItems/view?folderId=' + folderId,
+            modal: true,
+            onClose: function () {
+                $('#fileItemDialog').dialog('destroy');
+            }
+        });
+    };
+
+    FolderOperate.showFileItemFmt = function (value, row, index) {
+        return "<a href='#' onclick='FolderOperate.showFileItemDialog(\"" + row.id + "\");'>" + value + "</a>";
+    };
+
+</script>

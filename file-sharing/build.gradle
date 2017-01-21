@@ -23,6 +23,14 @@ jar {
     version = '0.0.1-SNAPSHOT'
 }
 
+bootRun {
+    addResources = true
+}
+
+bootRepackage {
+    mainClass = 'org.mcclone.FileSharingApplication'
+}
+
 sourceCompatibility = 1.8
 
 repositories {
