@@ -21,7 +21,7 @@
                     href: '/content/' + $(this).attr('id') + '.html'
                 });
             });
-            $('.menu-list li:first a.content').trigger('click');
+            $('.menu-list li:last a.content').trigger('click');
         });
     </script>
 </head>
@@ -36,6 +36,7 @@
                 <li><a href="#" id="file_sharing" class="content">文件共享</a></li>
                 <li><a href="#" id="user" class="content">用户管理</a></li>
                 <li><a href="#" id="resource" class="content">资源管理</a></li>
+                <li><a href="#" id="websocket" class="content">WebSocket</a></li>
             </ul>
         </div>
         <ul class="nav navbar-nav navbar-right">
