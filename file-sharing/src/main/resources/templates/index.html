@@ -11,7 +11,10 @@
     <link rel="stylesheet" type="text/css" href="/style/jquery-easyui-1.5.1/themes/icon.css"/>
     <script type="text/javascript" src="/style/jquery-easyui-1.5.1/jquery.easyui.min.js"></script>
     <script type="text/javascript" src="/style/jquery-easyui-1.5.1/locale/easyui-lang-zh_CN.js"></script>
+    <script src="http://cdn.bootcss.com/sockjs-client/1.1.1/sockjs.min.js"></script>
+    <script src="http://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
     <script type="text/javascript" src="/style/utils.js"></script>
+    <script type="text/javascript" src="/style/message.js"></script>
     <script>
         $(function () {
             $(".content").on('click', function (e) {
@@ -22,6 +25,7 @@
                 });
             });
             $('.menu-list li:last a.content').trigger('click');
+            $("[data-toggle='popover']").popover();
         });
     </script>
 </head>
@@ -37,19 +41,23 @@
                 <li><a href="#" id="user" class="content">用户管理</a></li>
                 <li><a href="#" id="resource" class="content">资源管理</a></li>
                 <li><a href="#" id="websocket" class="content">WebSocket</a></li>
+                <li><a href="#" id="push" class="content">推送中心</a></li>
             </ul>
         </div>
         <ul class="nav navbar-nav navbar-right">
             <li>
                 <form id="logout_form" action="/logout" method="get" hidden="hidden"></form>
-                <a href="#" onclick="$('#logout_form').submit();" id="logout_btn">
+                <a href="#" type="button" onclick="$('#logout_form').submit();" id="logout_btn">
                     <span class="glyphicon glyphicon-remove-sign"></span>
                     注销
                 </a>
 
             </li>
         </ul>
+        <div id="content_val" hidden="hidden"></div>
         <ul class="nav navbar-nav navbar-right">
+            <li><a href="#" id="msg_popover" data-container="body" data-toggle="popover"
+                   data-placement="bottom">消息 <span id="msg_badge" class="badge">0</span></a></li>
             <li>
                 <a th:if="${username == null}" href="/login" id="login_btn">
                     <span class="glyphicon glyphicon-user"></span>

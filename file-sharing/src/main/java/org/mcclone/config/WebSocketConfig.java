@@ -1,6 +1,6 @@
 package org.mcclone.config;
 
-import org.mcclone.web.handler.MyHandler;
+import org.mcclone.message.web.MyHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;

@@ -1,4 +1,4 @@
-package org.mcclone.web.handler;
+package org.mcclone.message.web;
 
 import lombok.extern.slf4j.Slf4j;
 import org.springframework.web.socket.TextMessage;
