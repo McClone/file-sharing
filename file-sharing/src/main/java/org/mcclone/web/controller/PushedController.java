@@ -26,7 +26,7 @@ public class PushedController {
     public ResponseEntity push(String title, String content) {
         String text = String.format("title: %s,content= %s .", title, content);
         log.info(text);
-        template.convertAndSend("/topic/greetings", text);
+        template.convertAndSend("/topic/pushed", text);
         return ResponseEntity.ok("ok");
     }
 }

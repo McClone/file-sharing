@@ -9,7 +9,7 @@ $(function () {
         title: '消息',
         content: showContent()
     });
-    connect('/hello-websocket', '/topic/greetings', function (data) {
+    connect('/hello-websocket', '/topic/pushed', function (data) {
         $('#content_val').append(data.body);
         var count = $badge.text();
         $badge.text(parseInt(count) + 1);
