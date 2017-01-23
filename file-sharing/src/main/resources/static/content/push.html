@@ -10,51 +10,55 @@
         border-radius: 5px;
     }
 </style>
-<div id="aa" class="easyui-accordion" data-options="border:false,multiple:true">
-    <div title="推送" data-options="iconCls:'icon-save'" style="overflow:auto;padding:10px;">
-        <div class="main-content">
-            <form class="form-horizontal" role="form">
-                <div class="form-group">
-                    <label for="push_content" class="col-sm-2 control-label">推送内容</label>
-                    <div class="col-sm-10">
+<div class="main-content">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <label for="push_content" class="col-sm-2 control-label">推送内容</label>
+            <div class="col-sm-10">
                 <textarea id="push_content" class="form-control" rows="3"
                           placeholder="推送内容"></textarea>
-                    </div>
-                </div>
-                <div class="form-group">
-                    <div class="col-sm-offset-2 col-sm-10">
-                        <button class="btn btn-default" id="subBtn">提交</button>
-                    </div>
-                </div>
-            </form>
-            <div id="message" style="max-width: 400px;margin: 20px auto 20px;">
-                <div id="successAlert" hidden="hidden" class="alert alert-success">
-                    <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    <strong>成功！</strong>结果是成功的。
-                </div>
-                <div id="errorAlert" hidden="hidden" class="alert alert-warning">
-                    <a href="#" class="close" data-dismiss="alert">&times;</a>
-                    <strong>警告！</strong>
-                    <p id="error_message"></p>
-                </div>
             </div>
         </div>
-    </div>
-    <div title="推送历史" data-options="iconCls:'icon-reload'">
-        <table id="dg" class="easyui-datagrid" title="推送历史"
-               data-options="toolbar:'#toolbar',fitColumns:true,idField:'id',rownumbers:true,url:'/pushed',singleSelect:true,method:'get',pagination:true,pageNumber:1,pageSize:10">
-            <thead>
-            <tr>
-                <th data-options="field:'username',width:100">用户名</th>
-                <th data-options="field:'content',width:100">推送内容</th>
-            </tr>
-            </thead>
-        </table>
+        <div class="form-group">
+            <div class="col-sm-offset-2 col-sm-10">
+                <button class="btn btn-default" id="subBtn">提交</button>
+            </div>
+        </div>
+    </form>
+    <div id="message" style="max-width: 400px;margin: 20px auto 20px;">
+        <div id="successAlert" hidden="hidden" class="alert alert-success">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>成功！</strong>结果是成功的。
+        </div>
+        <div id="errorAlert" hidden="hidden" class="alert alert-warning">
+            <a href="#" class="close" data-dismiss="alert">&times;</a>
+            <strong>警告！</strong>
+            <p id="error_message"></p>
+        </div>
     </div>
 </div>
+<table id="dg"></table>
 
 <script>
     $(function () {
+        $('#dg').datagrid({
+            title: '推送历史',
+            method: 'get',
+            fitColumns: true,
+            rownumbers: true,
+            idField: 'id',
+            singleSelect: true,
+            border: true,
+            pagination: true,
+            pageNumber: 1,
+            pageSize: 10,
+            url: '/pushed',
+            columns: [[
+                {field: 'createUsername', title: '创建人', width: 100},
+                {field: 'pushContent', title: '推送内容', width: 100},
+                {field: 'createdDate', title: '创建时间', width: 100}
+            ]]
+        });
         $('#subBtn').bind('click', function (e) {
             e.preventDefault();
             $.ajax({
@@ -62,6 +66,7 @@
                 type: 'POST',
                 data: {content: $('#push_content').val()},
                 success: function (data) {
+                    $('#dg').datagrid('reload');
                     $('#successAlert').show().delay(2000).hide(0);
                 },
                 error: function (data) {

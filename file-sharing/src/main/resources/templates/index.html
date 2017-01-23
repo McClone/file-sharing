@@ -24,52 +24,55 @@
                     href: '/content/' + $(this).attr('id') + '.html'
                 });
             });
-            $('.menu-list li:last a.content').trigger('click');
+            $('.menu-list li:first a.content').trigger('click');
             $("[data-toggle='popover']").popover();
+
         });
     </script>
 </head>
-<body>
-<nav class="navbar navbar-default" role="navigation">
-    <div class="container-fluid">
-        <div class="navbar-header">
-            <a class="navbar-brand" href="#">McClone</a>
+<body class="easyui-layout">
+<div data-options="region:'north',border:false,height:'auto'" style="overflow:hidden;">
+    <nav class="navbar navbar-default" role="navigation" style="margin-bottom: auto;">
+        <div class="container-fluid">
+            <div class="navbar-header">
+                <a class="navbar-brand" href="#">McClone</a>
+            </div>
+            <div>
+                <ul class="nav navbar-nav menu-list">
+                    <li><a href="#" id="file_sharing" class="content">文件共享</a></li>
+                    <li th:if="${username != null}"><a href="#" id="user" class="content">用户管理</a></li>
+                    <li th:if="${username != null}"><a href="#" id="resource" class="content">资源管理</a></li>
+                    <li th:if="${username != null}"><a href="#" id="push" class="content">推送中心</a></li>
+                    <li th:if="${username != null}"><a href="#" id="online_user" class="content">在线用户</a></li>
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="#" id="msg_popover" data-container="body" data-toggle="popover"
+                           data-placement="bottom">消息 <span id="msg_badge" class="badge">0</span></a></li>
+                    <li>
+                        <a th:if="${username == null}" href="/login" id="login_btn">
+                            <span class="glyphicon glyphicon-user"></span>
+                            登录
+                        </a>
+                        <a th:if="${username != null}" href="#">
+                            <span class="glyphicon glyphicon-user" th:text="${username}"></span>
+                        </a>
+                    </li>
+                    <li>
+                        <form id="logout_form" action="/logout" method="get" hidden="hidden"></form>
+                        <a href="#" type="button" onclick="$('#logout_form').submit();" id="logout_btn">
+                            <span class="glyphicon glyphicon-remove-sign"></span>
+                            注销
+                        </a>
+                    </li>
+                </ul>
+            </div>
+            <div id="content_val" hidden="hidden"></div>
         </div>
-        <div>
-            <ul class="nav navbar-nav menu-list">
-                <li><a href="#" id="file_sharing" class="content">文件共享</a></li>
-                <li th:if="${username != null}"><a href="#" id="user" class="content">用户管理</a></li>
-                <li th:if="${username != null}"><a href="#" id="resource" class="content">资源管理</a></li>
-                <li th:if="${username != null}"><a href="#" id="push" class="content">推送中心</a></li>
-                <li th:if="${username != null}"><a href="#" id="online_user" class="content">在线用户</a></li>
-            </ul>
-        </div>
-        <ul class="nav navbar-nav navbar-right">
-            <li>
-                <form id="logout_form" action="/logout" method="get" hidden="hidden"></form>
-                <a href="#" type="button" onclick="$('#logout_form').submit();" id="logout_btn">
-                    <span class="glyphicon glyphicon-remove-sign"></span>
-                    注销
-                </a>
-            </li>
-        </ul>
-        <div id="content_val" hidden="hidden"></div>
-        <ul class="nav navbar-nav navbar-right">
-            <li><a href="#" id="msg_popover" data-container="body" data-toggle="popover"
-                   data-placement="bottom">消息 <span id="msg_badge" class="badge">0</span></a></li>
-            <li>
-                <a th:if="${username == null}" href="/login" id="login_btn">
-                    <span class="glyphicon glyphicon-user"></span>
-                    登录
-                </a>
-                <a th:if="${username != null}" href="#">
-                    <span class="glyphicon glyphicon-user" th:text="${username}"></span>
-                </a>
-            </li>
-        </ul>
+    </nav>
+</div>
+<div data-options="region:'center',border:false">
+    <div id="content" class="easyui-panel" data-options="fit:true,border:false">
     </div>
-</nav>
-<div id="content" class="easyui-panel" data-options="fit:true,border:false">
 </div>
 </body>
 </html>
