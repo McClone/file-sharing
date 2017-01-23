@@ -10,14 +10,14 @@ $(function () {
         content: showContent()
     });
     connect('/hello-websocket', '/topic/pushed', function (data) {
-        $('#content_val').append(data.body);
+        $('#content_val').append('<div>' + data.body + '</div>');
         var count = $badge.text();
         $badge.text(parseInt(count) + 1);
     });
     //当调用 show 实例方法时立即触发该事件。
     $popover.on('shown.bs.popover', function () {
         var $contentVal = $('#content_val');
-        $('#msg_content').text($contentVal.html());
+        $('#msg_content').html($contentVal.html());
         $contentVal.html('');
         $badge.text(0);
     });
