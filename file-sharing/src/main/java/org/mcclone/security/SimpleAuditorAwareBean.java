@@ -20,7 +20,7 @@ public class SimpleAuditorAwareBean implements AuditorAware<User> {
     public User getCurrentAuditor() {
         UserDetails userDetails = SecurityUtils.getUserDetails();
         if (userDetails instanceof UserPrincipal)
-            return (User) ((UserPrincipal) userDetails).getPrincipal();
+            return (User) ((UserPrincipal) userDetails).getUser();
         return null;
     }
 }

@@ -35,8 +35,8 @@ public class UserDetailsServiceImpl implements UserDetailsService {
         SimpleGrantedAuthority authority = new SimpleGrantedAuthority("USER");
         List<GrantedAuthority> grantedAuthorities = new ArrayList<>();
         grantedAuthorities.add(authority);
-        UserPrincipal<User> userPrincipal = new UserPrincipal<>(user.getUsername(), user.getPassword(), grantedAuthorities);
-        userPrincipal.setPrincipal(user);
-        return userPrincipal;
+        UserPrincipal<User> userHolder = new UserPrincipal<>(user.getUsername(), user.getPassword(), grantedAuthorities);
+        userHolder.setUser(user);
+        return userHolder;
     }
 }

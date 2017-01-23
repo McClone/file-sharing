@@ -1,5 +1,6 @@
 package org.mcclone.utils;
 
+import org.mcclone.security.UserPrincipal;
 import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -27,5 +28,13 @@ public abstract class SecurityUtils {
             return (UserDetails) getPrincipal();
         }
         return null;
+    }
+
+    public static <T> UserPrincipal<T> getUserHolder(Class<T> tClass, Authentication authentication) {
+        UserDetails userDetails = (UserDetails) authentication.getPrincipal();
+        if (userDetails != null) {
+            return (UserPrincipal<T>) userDetails;
+        }
+        throw new RuntimeException("Authentication can find UserDetails!");
     }
 }

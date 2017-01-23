@@ -11,7 +11,7 @@ import java.util.Collection;
 public class UserPrincipal<E> extends User {
     private static final long serialVersionUID = 3739408594407047059L;
 
-    private E principal;
+    private E user;
 
     public UserPrincipal(String username, String password, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
@@ -21,11 +21,11 @@ public class UserPrincipal<E> extends User {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
     }
 
-    public E getPrincipal() {
-        return principal;
+    public E getUser() {
+        return user;
     }
 
-    public void setPrincipal(E principal) {
-        this.principal = principal;
+    public void setUser(E user) {
+        this.user = user;
     }
 }

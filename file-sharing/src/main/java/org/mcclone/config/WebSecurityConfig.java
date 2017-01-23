@@ -1,5 +1,6 @@
 package org.mcclone.config;
 
+import org.mcclone.security.AfterAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -40,7 +41,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .anyRequest()
                 .authenticated();
-        http.formLogin().loginPage("/login");
+        http.formLogin().loginPage("/login").defaultSuccessUrl("/index").successHandler(new AfterAuthenticationSuccessHandler());
         http.csrf().disable();
         http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"));
     }

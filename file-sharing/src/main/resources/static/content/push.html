@@ -10,16 +10,8 @@
         border-radius: 5px;
     }
 </style>
-<ul id="myTab" class="nav nav-tabs" style="margin: 0 0 0 15px;">
-    <li class="active">
-        <a href="#home" data-toggle="tab">
-            推送
-        </a>
-    </li>
-    <li><a href="#history" data-toggle="tab">推送历史</a></li>
-</ul>
-<div id="myTabContent" class="tab-content">
-    <div class="tab-pane fade in active" id="home">
+<div id="aa" class="easyui-accordion" data-options="border:false,multiple:true">
+    <div title="推送" data-options="iconCls:'icon-save'" style="overflow:auto;padding:10px;">
         <div class="main-content">
             <form class="form-horizontal" role="form">
                 <div class="form-group">
@@ -35,21 +27,29 @@
                     </div>
                 </div>
             </form>
-        </div>
-        <div id="message" style="max-width: 400px;margin: 20px auto 20px;">
-            <div id="successAlert" hidden="hidden" class="alert alert-success">
-                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                <strong>成功！</strong>结果是成功的。
-            </div>
-            <div id="errorAlert" hidden="hidden" class="alert alert-warning">
-                <a href="#" class="close" data-dismiss="alert">&times;</a>
-                <strong>警告！</strong>
-                <p id="error_message"></p>
+            <div id="message" style="max-width: 400px;margin: 20px auto 20px;">
+                <div id="successAlert" hidden="hidden" class="alert alert-success">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>成功！</strong>结果是成功的。
+                </div>
+                <div id="errorAlert" hidden="hidden" class="alert alert-warning">
+                    <a href="#" class="close" data-dismiss="alert">&times;</a>
+                    <strong>警告！</strong>
+                    <p id="error_message"></p>
+                </div>
             </div>
         </div>
     </div>
-    <div class="tab-pane fade" id="history">
-        <p>history</p>
+    <div title="推送历史" data-options="iconCls:'icon-reload'">
+        <table id="dg" class="easyui-datagrid" title="推送历史"
+               data-options="toolbar:'#toolbar',fitColumns:true,idField:'id',rownumbers:true,url:'/pushed',singleSelect:true,method:'get',pagination:true,pageNumber:1,pageSize:10">
+            <thead>
+            <tr>
+                <th data-options="field:'username',width:100">用户名</th>
+                <th data-options="field:'content',width:100">推送内容</th>
+            </tr>
+            </thead>
+        </table>
     </div>
 </div>
 
