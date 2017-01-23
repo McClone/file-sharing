@@ -38,10 +38,9 @@
         <div>
             <ul class="nav navbar-nav menu-list">
                 <li><a href="#" id="file_sharing" class="content">文件共享</a></li>
-                <li><a href="#" id="user" class="content">用户管理</a></li>
-                <li><a href="#" id="resource" class="content">资源管理</a></li>
-                <li><a href="#" id="websocket" class="content">WebSocket</a></li>
-                <li><a href="#" id="push" class="content">推送中心</a></li>
+                <li th:if="${username != null}"><a href="#" id="user" class="content">用户管理</a></li>
+                <li th:if="${username != null}"><a href="#" id="resource" class="content">资源管理</a></li>
+                <li th:if="${username != null}"><a href="#" id="push" class="content">推送中心</a></li>
             </ul>
         </div>
         <ul class="nav navbar-nav navbar-right">

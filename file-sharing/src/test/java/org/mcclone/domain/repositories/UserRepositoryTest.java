@@ -27,6 +27,7 @@ public class UserRepositoryTest {
         User user = new User();
         user.setUsername("admin");
         user.setPassword(passwordEncoder.encode("123"));
+        System.out.println(user);
         this.userRepository.save(user);
     }
 

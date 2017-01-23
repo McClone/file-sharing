@@ -7,22 +7,11 @@ import org.springframework.context.ApplicationEvent;
  */
 public class PushEvent extends ApplicationEvent {
 
-    private String title;
-
     private String content;
 
-    public PushEvent(Object source, String title, String content) {
+    public PushEvent(Object source, String content) {
         super(source);
         this.content = content;
-        this.title = title;
-    }
-
-    public String getTitle() {
-        return title;
-    }
-
-    public void setTitle(String title) {
-        this.title = title;
     }
 
     public String getContent() {
