@@ -1,6 +1,6 @@
 package org.mcclone.service;
 
-import org.mcclone.domain.entity.Folder;
+import org.mcclone.domain.jpa.entity.Folder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

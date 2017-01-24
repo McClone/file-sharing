@@ -1,4 +1,4 @@
-package org.mcclone.domain.entity;
+package org.mcclone.domain.jpa.entity;
 
 import com.fasterxml.jackson.annotation.JsonIgnore;
 import lombok.Data;

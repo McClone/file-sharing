@@ -2,7 +2,7 @@ package org.mcclone.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
 import org.apache.commons.collections4.CollectionUtils;
-import org.mcclone.domain.repositories.ResourceRepository;
+import org.mcclone.domain.jpa.repositories.ResourceRepository;
 import org.mcclone.service.ResourceService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
@@ -39,7 +39,7 @@ public class ResourceServiceImpl implements ResourceService {
 
     @Override
     public void saveMvcUrl() {
-        resourceRepository.deleteAllByCreateType(org.mcclone.domain.entity.Resource.MVC_URL_INIT);
+        resourceRepository.deleteAllByCreateType(org.mcclone.domain.jpa.entity.Resource.MVC_URL_INIT);
         log.info("删除资源，并开始生成");
         //获取所有的请求信息
         Map<RequestMappingInfo, HandlerMethod> requestMappingInfoMap = requestMappingHandlerMapping.getHandlerMethods();
@@ -48,7 +48,7 @@ public class ResourceServiceImpl implements ResourceService {
             //请求路径
             PatternsRequestCondition patternsRequestCondition = requestMappingInfo.getPatternsCondition();
             if (patternsRequestCondition != null) {
-                org.mcclone.domain.entity.Resource resource = new org.mcclone.domain.entity.Resource();
+                org.mcclone.domain.jpa.entity.Resource resource = new org.mcclone.domain.jpa.entity.Resource();
                 resource.setPatterns(patternsResourceResolver.resolver(patternsRequestCondition));
 
                 //请求方法（GET,POST等）
@@ -59,7 +59,7 @@ public class ResourceServiceImpl implements ResourceService {
                 ProducesRequestCondition producesCondition = requestMappingInfo.getProducesCondition();
                 resource.setMediaType(producesResourceResolver.resolver(producesCondition));
 
-                resource.setCreateType(org.mcclone.domain.entity.Resource.MVC_URL_INIT);
+                resource.setCreateType(org.mcclone.domain.jpa.entity.Resource.MVC_URL_INIT);
                 this.resourceRepository.save(resource);
             }
         }
@@ -67,7 +67,7 @@ public class ResourceServiceImpl implements ResourceService {
     }
 
     @Override
-    public Page<org.mcclone.domain.entity.Resource> findAll(Pageable pageable) {
+    public Page<org.mcclone.domain.jpa.entity.Resource> findAll(Pageable pageable) {
         return resourceRepository.findAll(pageable);
     }
 

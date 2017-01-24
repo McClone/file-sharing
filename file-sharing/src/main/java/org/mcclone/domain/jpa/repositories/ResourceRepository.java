@@ -1,6 +1,6 @@
-package org.mcclone.domain.repositories;
+package org.mcclone.domain.jpa.repositories;
 
-import org.mcclone.domain.entity.Resource;
+import org.mcclone.domain.jpa.entity.Resource;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

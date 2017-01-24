@@ -1,8 +1,8 @@
-package org.mcclone.domain.repositories;
+package org.mcclone.domain.jpa.repositories;
 
 import org.junit.Test;
 import org.junit.runner.RunWith;
-import org.mcclone.domain.entity.User;
+import org.mcclone.domain.jpa.entity.User;
 import org.springframework.boot.test.context.SpringBootTest;
 import org.springframework.security.crypto.password.PasswordEncoder;
 import org.springframework.test.context.junit4.SpringRunner;

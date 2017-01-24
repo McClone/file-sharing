@@ -1,6 +1,6 @@
-package org.mcclone.domain.repositories;
+package org.mcclone.domain.jpa.repositories;
 
-import org.mcclone.domain.entity.Folder;
+import org.mcclone.domain.jpa.entity.Folder;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.jpa.repository.JpaRepository;

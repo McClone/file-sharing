@@ -1,8 +1,8 @@
 package org.mcclone.service.impl;
 
 import org.apache.commons.lang3.StringUtils;
-import org.mcclone.domain.entity.Folder;
-import org.mcclone.domain.repositories.FolderRepository;
+import org.mcclone.domain.jpa.entity.Folder;
+import org.mcclone.domain.jpa.repositories.FolderRepository;
 import org.mcclone.service.FolderService;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;

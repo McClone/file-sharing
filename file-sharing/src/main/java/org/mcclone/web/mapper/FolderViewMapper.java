@@ -1,6 +1,6 @@
 package org.mcclone.web.mapper;
 
-import org.mcclone.domain.entity.Folder;
+import org.mcclone.domain.jpa.entity.Folder;
 import org.mcclone.web.ui.SimpleViewMapper;
 import org.mcclone.web.view.FolderView;
 import org.springframework.beans.BeanUtils;

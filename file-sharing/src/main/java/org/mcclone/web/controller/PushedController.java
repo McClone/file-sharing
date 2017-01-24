@@ -1,8 +1,8 @@
 package org.mcclone.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.mcclone.domain.entity.PushedMessage;
-import org.mcclone.domain.repositories.PushedMessageRepository;
+import org.mcclone.domain.jpa.entity.PushedMessage;
+import org.mcclone.domain.jpa.repositories.PushedMessageRepository;
 import org.mcclone.message.push.PushEvent;
 import org.mcclone.support.ApplicationEventPublisherHolder;
 import org.mcclone.web.ui.EasyUIGenerator;

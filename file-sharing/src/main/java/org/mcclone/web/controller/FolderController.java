@@ -1,7 +1,7 @@
 package org.mcclone.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.mcclone.domain.entity.Folder;
+import org.mcclone.domain.jpa.entity.Folder;
 import org.mcclone.service.FolderService;
 import org.mcclone.web.ui.EasyUIGenerator;
 import org.mcclone.web.ui.EasyUIPageRequest;

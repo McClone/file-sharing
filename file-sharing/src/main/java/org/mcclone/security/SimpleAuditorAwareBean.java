@@ -1,6 +1,6 @@
 package org.mcclone.security;
 
-import org.mcclone.domain.entity.User;
+import org.mcclone.domain.jpa.entity.User;
 import org.mcclone.utils.SecurityUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;

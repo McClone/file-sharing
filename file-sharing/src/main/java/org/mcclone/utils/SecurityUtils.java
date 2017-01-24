@@ -30,9 +30,17 @@ public abstract class SecurityUtils {
         return null;
     }
 
+    public static UserDetails getUserDetails(Authentication authentication) {
+        Object principal = authentication.getPrincipal();
+        if (authentication.isAuthenticated() && principal instanceof UserDetails) {
+            return (UserDetails) principal;
+        }
+        throw new RuntimeException("Authentication can't find UserDetails!");
+    }
+
     public static <T> UserPrincipal<T> getUserHolder(Class<T> tClass, Authentication authentication) {
         UserDetails userDetails = (UserDetails) authentication.getPrincipal();
-        if (userDetails != null) {
+        if (userDetails != null && userDetails instanceof UserPrincipal) {
             return (UserPrincipal<T>) userDetails;
         }
         throw new RuntimeException("Authentication can find UserDetails!");

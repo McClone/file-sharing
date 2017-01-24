@@ -1,6 +1,6 @@
 package org.mcclone.web.mapper;
 
-import org.mcclone.domain.entity.PushedMessage;
+import org.mcclone.domain.jpa.entity.PushedMessage;
 import org.mcclone.web.ui.SimpleViewMapper;
 import org.mcclone.web.view.PushedMessageView;
 import org.springframework.stereotype.Component;

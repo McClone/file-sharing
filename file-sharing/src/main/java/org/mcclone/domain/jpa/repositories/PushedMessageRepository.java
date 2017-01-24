@@ -1,6 +1,6 @@
-package org.mcclone.domain.repositories;
+package org.mcclone.domain.jpa.repositories;
 
-import org.mcclone.domain.entity.PushedMessage;
+import org.mcclone.domain.jpa.entity.PushedMessage;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**

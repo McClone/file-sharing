@@ -1,8 +1,8 @@
 package org.mcclone.service.impl;
 
 import lombok.extern.slf4j.Slf4j;
-import org.mcclone.domain.entity.User;
-import org.mcclone.domain.repositories.UserRepository;
+import org.mcclone.domain.jpa.entity.User;
+import org.mcclone.domain.jpa.repositories.UserRepository;
 import org.mcclone.service.UserService;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
 import org.springframework.stereotype.Service;

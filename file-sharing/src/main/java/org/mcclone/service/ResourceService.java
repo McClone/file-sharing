@@ -1,6 +1,6 @@
 package org.mcclone.service;
 
-import org.mcclone.domain.entity.Resource;
+import org.mcclone.domain.jpa.entity.Resource;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 

@@ -27,7 +27,7 @@ public class UrlResourcesController {
 
     @GetMapping
     public ResponseEntity findAll(EasyUIPageRequest pageRequest) {
-        Page<org.mcclone.domain.entity.Resource> resources = resourceService.findAll(EasyUIGenerator.createPageable(pageRequest, Sort.Direction.DESC, "patterns", "createdDate"));
+        Page<org.mcclone.domain.jpa.entity.Resource> resources = resourceService.findAll(EasyUIGenerator.createPageable(pageRequest, Sort.Direction.DESC, "patterns", "createdDate"));
         return ResponseEntity.ok(EasyUIGenerator.createEasyUIPage(resources));
     }
 
