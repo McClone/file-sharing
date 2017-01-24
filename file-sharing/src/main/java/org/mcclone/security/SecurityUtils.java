@@ -29,8 +29,7 @@ public abstract class SecurityUtils {
     }
 
     public static <T> T getPrincipal(Class<T> t) {
-        Authentication authentication = getAuthentication();
-        Object principal = authentication.getPrincipal();
+        Object principal = SecurityContextHolder.getContext().getAuthentication().getPrincipal();
         if (principal != null)
             return t.cast(principal);
         else

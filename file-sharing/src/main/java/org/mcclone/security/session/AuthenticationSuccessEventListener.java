@@ -4,6 +4,7 @@ import lombok.extern.slf4j.Slf4j;
 import org.mcclone.security.SecurityUtils;
 import org.springframework.context.ApplicationListener;
 import org.springframework.security.authentication.event.AuthenticationSuccessEvent;
+import org.springframework.security.core.Authentication;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Component;
 
@@ -21,6 +22,8 @@ public class AuthenticationSuccessEventListener implements ApplicationListener<A
 
     @Override
     public void onApplicationEvent(AuthenticationSuccessEvent event) {
-        sessionRepositoryService.save(SecurityUtils.getPrincipal(UserDetails.class).getUsername(), SecurityUtils.getPrincipal());
+        Authentication authentication = event.getAuthentication();
+        UserDetails userDetails = SecurityUtils.getPrincipal(authentication, UserDetails.class);
+        sessionRepositoryService.save(userDetails.getUsername(), userDetails);
     }
 }
