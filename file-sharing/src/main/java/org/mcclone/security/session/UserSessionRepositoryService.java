@@ -13,4 +13,5 @@ public interface UserSessionRepositoryService {
 
     List<Object> findAll();
 
+    void kill(String username);
 }

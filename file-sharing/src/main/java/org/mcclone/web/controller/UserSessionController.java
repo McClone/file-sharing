@@ -2,10 +2,10 @@ package org.mcclone.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mcclone.security.session.UserSessionRepositoryService;
+import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
+import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.RequestMapping;
-import org.springframework.web.bind.annotation.RestController;
+import org.springframework.web.bind.annotation.*;
 
 import javax.annotation.Resource;
 import java.util.List;
@@ -13,6 +13,7 @@ import java.util.List;
 /**
  * Created by Administrator on 2017/1/24.
  */
+@ConditionalOnBean(name = "redisUserSessionRepositoryService")
 @RestController
 @RequestMapping("/sessions")
 @Slf4j
@@ -25,5 +26,11 @@ public class UserSessionController {
     public ResponseEntity findAll() {
         List<Object> usernames = sessionRepositoryService.findAll();
         return ResponseEntity.ok(usernames);
+    }
+
+    @DeleteMapping("/{username}")
+    @ResponseStatus(HttpStatus.OK)
+    public void killUser(@PathVariable String username) {
+        sessionRepositoryService.kill(username);
     }
 }
