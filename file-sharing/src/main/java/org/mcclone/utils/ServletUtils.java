@@ -6,6 +6,7 @@ import org.springframework.web.context.request.RequestContextHolder;
 import org.springframework.web.context.request.ServletRequestAttributes;
 
 import javax.servlet.http.HttpServletRequest;
+import javax.servlet.http.HttpSession;
 
 /**
  * Created by Administrator on 2017/1/24.
@@ -19,5 +20,9 @@ public abstract class ServletUtils {
         HttpServletRequest servletRequest = ((ServletRequestAttributes) requestAttributes).getRequest();
         Assert.state(servletRequest != null, "Could not find current HttpServletRequest");
         return servletRequest;
+    }
+
+    public static HttpSession getCurrentSession() {
+        return getCurrentRequest().getSession();
     }
 }

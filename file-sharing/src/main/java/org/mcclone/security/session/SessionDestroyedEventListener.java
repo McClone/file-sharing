@@ -1,8 +1,7 @@
 package org.mcclone.security.session;
 
-import org.mcclone.security.SecurityUtils;
 import org.springframework.context.ApplicationListener;
-import org.springframework.security.core.userdetails.UserDetails;
+import org.springframework.session.FindByIndexNameSessionRepository;
 import org.springframework.session.events.SessionDestroyedEvent;
 import org.springframework.stereotype.Component;
 
@@ -19,7 +18,7 @@ public class SessionDestroyedEventListener implements ApplicationListener<Sessio
 
     @Override
     public void onApplicationEvent(SessionDestroyedEvent event) {
-        String username = SecurityUtils.getPrincipal(UserDetails.class).getUsername();
+        String username = event.getSession().getAttribute(FindByIndexNameSessionRepository.PRINCIPAL_NAME_INDEX_NAME);
         sessionRepositoryService.delete(username);
     }
 }

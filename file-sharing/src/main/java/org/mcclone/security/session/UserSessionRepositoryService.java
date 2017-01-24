@@ -12,4 +12,5 @@ public interface UserSessionRepositoryService {
     void delete(String userKey);
 
     List<Object> findAll();
+
 }
