@@ -1,12 +1,10 @@
 package org.mcclone.security;
 
 import org.mcclone.domain.jpa.entity.User;
-import org.mcclone.utils.SecurityUtils;
 import org.springframework.boot.autoconfigure.condition.ConditionalOnProperty;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.data.domain.AuditorAware;
 import org.springframework.data.jpa.repository.config.EnableJpaAuditing;
-import org.springframework.security.core.userdetails.UserDetails;
 
 /**
  * Created by mcclone on 17-1-12.
@@ -18,9 +16,10 @@ public class SimpleAuditorAwareBean implements AuditorAware<User> {
 
     @Override
     public User getCurrentAuditor() {
-        UserDetails userDetails = SecurityUtils.getUserDetails();
-        if (userDetails instanceof UserPrincipal)
-            return (User) ((UserPrincipal) userDetails).getUser();
+        UserPrincipal principal = SecurityUtils.getPrincipal(UserPrincipal.class);
+        Object user = principal.getUser();
+        if (user instanceof User)
+            return (User) user;
         return null;
     }
 }

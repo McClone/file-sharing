@@ -1,6 +1,5 @@
 package org.mcclone.config;
 
-import org.mcclone.security.AfterAuthenticationSuccessHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.security.authentication.dao.DaoAuthenticationProvider;
 import org.springframework.security.config.annotation.web.builders.HttpSecurity;
@@ -8,7 +7,6 @@ import org.springframework.security.config.annotation.web.configuration.EnableWe
 import org.springframework.security.config.annotation.web.configuration.WebSecurityConfigurerAdapter;
 import org.springframework.security.core.userdetails.UserDetailsService;
 import org.springframework.security.crypto.password.StandardPasswordEncoder;
-import org.springframework.security.web.authentication.AuthenticationSuccessHandler;
 import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 
 import javax.annotation.Resource;
@@ -35,11 +33,6 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
         return provider;
     }
 
-    @Bean
-    public AuthenticationSuccessHandler successHandler() {
-        return new AfterAuthenticationSuccessHandler();
-    }
-
     @Override
     protected void configure(HttpSecurity http) throws Exception {
         http.authorizeRequests()
@@ -47,7 +40,7 @@ public class WebSecurityConfig extends WebSecurityConfigurerAdapter {
                 .permitAll()
                 .anyRequest()
                 .authenticated();
-        http.formLogin().loginPage("/login").defaultSuccessUrl("/index").successHandler(successHandler());
+        http.formLogin().loginPage("/login").defaultSuccessUrl("/index");
         http.csrf().disable();
         http.logout().logoutRequestMatcher(new AntPathRequestMatcher("/logout", "GET"));
     }

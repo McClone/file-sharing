@@ -1,7 +1,7 @@
 package org.mcclone.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.mcclone.utils.SecurityUtils;
+import org.mcclone.security.SecurityUtils;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -23,9 +23,9 @@ public class HtmlMappingController {
 
     @GetMapping("/index")
     public String index(Model model) {
-        UserDetails principal = SecurityUtils.getUserDetails();
-        if (principal != null) {
-            model.addAttribute("username", principal.getUsername());
+        Object principal = SecurityUtils.getPrincipal();
+        if (principal != null && principal instanceof UserDetails) {
+            model.addAttribute("username", ((UserDetails) principal).getUsername());
         }
         return "index";
     }

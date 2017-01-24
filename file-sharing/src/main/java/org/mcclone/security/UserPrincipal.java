@@ -8,10 +8,10 @@ import java.util.Collection;
 /**
  * Created by mcclone on 17-1-14.
  */
-public class UserPrincipal<E> extends User {
+public class UserPrincipal extends User {
     private static final long serialVersionUID = 3739408594407047059L;
 
-    private E user;
+    private Object user;
 
     public UserPrincipal(String username, String password, Collection<? extends GrantedAuthority> authorities) {
         super(username, password, authorities);
@@ -21,11 +21,11 @@ public class UserPrincipal<E> extends User {
         super(username, password, enabled, accountNonExpired, credentialsNonExpired, accountNonLocked, authorities);
     }
 
-    public E getUser() {
+    public Object getUser() {
         return user;
     }
 
-    public void setUser(E user) {
+    public void setUser(Object user) {
         this.user = user;
     }
 }

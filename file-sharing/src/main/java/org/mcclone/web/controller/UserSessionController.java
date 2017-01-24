@@ -1,7 +1,7 @@
 package org.mcclone.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
-import org.springframework.data.redis.core.RedisTemplate;
+import org.mcclone.security.session.UserSessionRepositoryService;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -18,17 +18,12 @@ import java.util.List;
 @Slf4j
 public class UserSessionController {
 
-    @Resource
-    private RedisTemplate<String, Object> redisTemplate;
-
-//    @Resource(name = "sessionRepository")
-//    private FindByIndexNameSessionRepository<Session> sessionRepository;
+    @Resource(name = "redisUserSessionRepositoryService")
+    private UserSessionRepositoryService sessionRepositoryService;
 
     @GetMapping
     public ResponseEntity findAll() {
-        List<Object> usernames = redisTemplate.opsForHash().values("online_user");
+        List<Object> usernames = sessionRepositoryService.findAll();
         return ResponseEntity.ok(usernames);
-//        Map<String, Session> sessionIdToSession = this.sessionRepository.findByIndexNameAndIndexValue(FindByIndexNameSessionRepository.PRINCIPAL_NAME_INDEX_NAME, "admin");
-//        log.info(sessionIdToSession.toString());
     }
 }

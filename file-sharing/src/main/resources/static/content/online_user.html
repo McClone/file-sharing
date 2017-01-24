@@ -1,10 +1,11 @@
 <table id="dg" class="easyui-datagrid" title="用户"
-       data-options="toolbar:'#toolbar',fit:true,fitColumns:true,idField:'id',rownumbers:true,
+       data-options="fit:true,fitColumns:true,idField:'username',rownumbers:true,
        url:'/sessions',singleSelect:true,method:'get'">
     <thead>
     <tr>
         <th data-options="field:'username',width:100">用户名</th>
-        <th data-options="field:'id',width:100">聊天</th>
+        <th data-options="field:'password',width:50">踢人</th>
+        <th data-options="field:'user.id',width:50">聊天</th>
     </tr>
     </thead>
 </table>
