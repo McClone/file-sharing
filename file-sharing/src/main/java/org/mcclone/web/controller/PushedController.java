@@ -4,11 +4,11 @@ import lombok.extern.slf4j.Slf4j;
 import org.mcclone.domain.jpa.entity.PushedMessage;
 import org.mcclone.domain.jpa.repositories.PushedMessageRepository;
 import org.mcclone.message.push.PushEvent;
-import org.mcclone.support.ApplicationEventPublisherHolder;
 import org.mcclone.web.ui.EasyUIGenerator;
 import org.mcclone.web.ui.EasyUIPageRequest;
 import org.mcclone.web.ui.ViewMapper;
 import org.mcclone.web.view.PushedMessageView;
+import org.springframework.context.ApplicationContext;
 import org.springframework.data.domain.Page;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -27,7 +27,7 @@ import javax.annotation.Resource;
 public class PushedController {
 
     @Resource
-    private ApplicationEventPublisherHolder applicationEventPublisher;
+    private ApplicationContext applicationContext;
 
     @Resource
     private PushedMessageRepository repository;
@@ -40,7 +40,7 @@ public class PushedController {
         PushedMessage message = new PushedMessage();
         message.setPushContent(content);
         repository.save(message);
-        applicationEventPublisher.publishEvent(new PushEvent(this, content));
+        applicationContext.publishEvent(new PushEvent(this, content));
         return ResponseEntity.ok("ok");
     }
 
