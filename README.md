@@ -1,1 +1,13 @@
 # quickboot
+
+##相关技术:
+
+1、Spring Boot
+2、Spring Security
+3、Spring Session
+
+##主要功能：
+文件共享
+在线用户统计
+踢人
+支持WebSocket推送消息

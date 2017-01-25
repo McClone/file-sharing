@@ -30,5 +30,6 @@ public class UserSessionController {
     @ResponseStatus(HttpStatus.OK)
     public void killUser(@PathVariable String username) {
         sessionRepositoryService.kill(username);
+        log.info(username + "被踢人");
     }
 }
