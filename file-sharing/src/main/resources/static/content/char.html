@@ -1,0 +1,52 @@
+<div class="panel panel-primary" style="height: 70%;">
+    <div class="panel-heading">
+        <h3 class="panel-title">
+            聊天窗口
+        </h3>
+    </div>
+    <div id="console" class="panel-body">
+        <table class="table">
+            <tbody id="console_table">
+            <!--<tr><td><h5 class="self_message">1</h5></td></tr>-->
+            </tbody>
+        </table>
+    </div>
+</div>
+<div class="main-content">
+    <form class="form-horizontal" role="form">
+        <div class="form-group">
+            <div class="col-sm-10" style="float: left;">
+                <textarea id="chat" class="form-control" rows="3"
+                          placeholder="聊天内容"></textarea>
+            </div>
+            <div class="col-sm-offset-10 col-sm-10" style="float: left">
+                <button class="btn btn-default" type="button" id="subBtn">发送</button>
+            </div>
+        </div>
+    </form>
+</div>
+<style>
+    .self_message {
+        float: right;
+    }
+
+    #console {
+        height: 100%;
+        padding-top: 20px;
+        padding-left: 20px;
+        padding-right: 20px;
+    }
+
+    .main-content {
+        width: 500px;
+        margin: 20px auto auto auto;
+        padding: 2em 3em;
+        background-color: #fff;
+        border: 1px solid #357ebd;
+        -webkit-border-radius: 5px;
+        -moz-border-radius: 5px;
+        border-radius: 5px;
+    }
+</style>
+<script type="text/javascript" src="/content/js/char.js"></script>
+

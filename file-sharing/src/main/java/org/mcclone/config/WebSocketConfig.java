@@ -1,6 +1,6 @@
 package org.mcclone.config;
 
-import org.mcclone.message.web.MyHandler;
+import org.mcclone.message.web.CharWebSocketHandler;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.messaging.simp.config.MessageBrokerRegistry;
@@ -18,19 +18,19 @@ public class WebSocketConfig extends AbstractWebSocketMessageBrokerConfigurer im
 
     @Override
     public void registerWebSocketHandlers(WebSocketHandlerRegistry registry) {
-        registry.addHandler(myHandler(), "/myHandler")
+        registry.addHandler(charWebSocketHandler(), "/char")
                 .addInterceptors(new HttpSessionHandshakeInterceptor())
                 .setAllowedOrigins("/**");
     }
 
     @Bean
-    public WebSocketHandler myHandler() {
-        return new MyHandler();
+    public WebSocketHandler charWebSocketHandler() {
+        return new CharWebSocketHandler();
     }
 
     @Override
     public void registerStompEndpoints(StompEndpointRegistry registry) {
-        registry.addEndpoint("/hello-websocket").withSockJS();
+        registry.addEndpoint("/websocket").withSockJS();
     }
 
     @Override

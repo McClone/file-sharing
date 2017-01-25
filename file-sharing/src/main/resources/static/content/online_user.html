@@ -5,33 +5,10 @@
     <tr>
         <th data-options="field:'username',width:100">用户名</th>
         <th data-options="field:'kill',width:50,formatter:killUserFmt">踢人</th>
-        <th data-options="field:'talk',width:50,formatter:talkFmt">聊天</th>
     </tr>
     </thead>
 </table>
 <script>
-    function talkFmt(value, row, index) {
-        return "<a href='#' onclick='talk(\"" + row.username + "\");'>聊天</a>";
-    }
-
-    function talk(username) {
-        $('<div id="talkDialog">聊天</div>').dialog({
-            title: '聊天',
-            width: 1000,
-            height: 500,
-            closed: false,
-            cache: false,
-            maximizable: true,
-            href: '/content/talk.html',
-            modal: true,
-            onLoad: function () {
-
-            },
-            onClose: function () {
-            }
-        });
-    }
-
     function killUserFmt(value, row, index) {
         return "<a href='#' onclick='killUser(\"" + row.username + "\");'>踢人</a>";
     }

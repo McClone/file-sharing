@@ -13,20 +13,11 @@
     <script type="text/javascript" src="/style/jquery-easyui-1.5.1/locale/easyui-lang-zh_CN.js"></script>
     <script src="http://cdn.bootcss.com/sockjs-client/1.1.1/sockjs.min.js"></script>
     <script src="http://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
-    <script type="text/javascript" src="/style/utils.js"></script>
-    <script th:if="${username != null}" type="text/javascript" src="/style/message.js"></script>
+    <script type="text/javascript" src="/content/js/utils.js"></script>
+    <script type="text/javascript" src="/content/js/index.js"></script>
     <script>
         $(function () {
-            $(".content").on('click', function (e) {
-                $('.menu-list li.active').removeClass("active");
-                $(this).parent().addClass("active");
-                $('#content').panel({
-                    href: '/content/' + $(this).attr('id') + '.html'
-                });
-            });
-            $('.menu-list li:first a.content').trigger('click');
             $("[data-toggle='popover']").popover();
-
         });
     </script>
 </head>
@@ -44,6 +35,7 @@
                     <li th:if="${username != null}"><a href="#" id="resource" class="content">资源管理</a></li>
                     <li th:if="${username != null}"><a href="#" id="push" class="content">推送中心</a></li>
                     <li th:if="${username != null}"><a href="#" id="online_user" class="content">在线用户</a></li>
+                    <li th:if="${username != null}"><a href="#" id="char" class="content">在线讨论</a></li>
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
                     <li><a href="#" id="msg_popover" data-container="body" data-toggle="popover"
@@ -54,7 +46,7 @@
                             登录
                         </a>
                         <a th:if="${username != null}" href="#">
-                            <span class="glyphicon glyphicon-user" th:text="${username}"></span>
+                            <span id="user_name" class="glyphicon glyphicon-user" th:text="${username}"></span>
                         </a>
                     </li>
                     <li>

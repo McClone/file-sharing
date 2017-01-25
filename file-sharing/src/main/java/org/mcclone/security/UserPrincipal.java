@@ -28,4 +28,9 @@ public class UserPrincipal extends User {
     public void setUser(Object user) {
         this.user = user;
     }
+
+    @Override
+    public String toString() {
+        return "username:" + getUsername();
+    }
 }
