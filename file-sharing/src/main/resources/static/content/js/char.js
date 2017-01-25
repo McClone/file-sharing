@@ -15,7 +15,7 @@ $(function () {
     WS.init({
         host: '/char',
         onOpen: function () {
-            console.log('Info: WebSocket connection opened.');
+            console.log('在线状态');
             document.getElementById('chat').onkeydown = function (event) {
                 if (event.keyCode == 13) {
                     Chat.sendMessage();
@@ -26,7 +26,7 @@ $(function () {
             });
         }, onClose: function () {
             document.getElementById('chat').onkeydown = null;
-            console.log('Info: WebSocket closed.');
+            console.log('离线状态');
         }, onMessage: function (message) {
             $('#console_table').append('<tr><td><span>' + message.data + '</span></td></tr>');
         }
