@@ -29,21 +29,21 @@ WS.init = function (options) {
     } else if ('MozWebSocket' in window) {
         WS.socket = new MozWebSocket(host);
     } else {
-        console.log('此浏览器不支持WebSocket.');
+        console.warn('此浏览器不支持WebSocket.');
     }
 
     WS.socket.onopen = function () {
         options.onOpen();
     };
 
-    WS.socket.onclose = function () {
+    WS.socket.onclose = function (e) {
         options.onClose();
     };
 
-    WS.socket.onmessage = function (message) {
-        options.onMessage(message);
+    WS.socket.onmessage = function (e) {
+        options.onMessage(e);
     };
-    WS.socket.onerror = function () {
+    WS.socket.onerror = function (e) {
 
     }
 };
