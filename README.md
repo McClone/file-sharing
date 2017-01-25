@@ -5,6 +5,8 @@
 1、Spring Boot
 2、Spring Security
 3、Spring Session
+4、Bootstrap
+5、EasyUI
 
 ##主要功能：
 文件共享
