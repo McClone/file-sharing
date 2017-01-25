@@ -11,7 +11,7 @@ import java.io.Serializable;
 import java.util.List;
 
 /**
- * Created by mcclone on 17-1-11.
+ * @author McClone
  */
 @Entity
 @Table(name = "T_FOLDER")

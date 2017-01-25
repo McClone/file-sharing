@@ -15,7 +15,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
- * Created by mcclone on 17-1-14.
+ * @author McClone
  */
 @Slf4j
 @RestController

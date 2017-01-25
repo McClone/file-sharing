@@ -10,7 +10,7 @@ import java.io.Serializable;
 import java.util.UUID;
 
 /**
- * Created by mcclone on 17-1-12.
+ * @author McClone
  */
 @MappedSuperclass
 @Data

@@ -4,7 +4,7 @@ import java.util.ArrayList;
 import java.util.Collection;
 
 /**
- * Created by mcclone on 17-1-14.
+ * @author McClone
  */
 public abstract class SimpleViewMapper<T, F> implements ViewMapper<T, F> {
 

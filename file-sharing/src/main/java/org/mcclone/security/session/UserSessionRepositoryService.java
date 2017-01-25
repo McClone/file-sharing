@@ -3,7 +3,7 @@ package org.mcclone.security.session;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/1/24.
+ * @author McClone
  */
 public interface UserSessionRepositoryService {
 

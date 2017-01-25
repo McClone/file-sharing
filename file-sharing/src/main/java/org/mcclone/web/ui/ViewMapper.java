@@ -3,7 +3,7 @@ package org.mcclone.web.ui;
 import java.util.Collection;
 
 /**
- * Created by mcclone on 17-1-14.
+ * @author McClone
  */
 public interface ViewMapper<T, F> {
 

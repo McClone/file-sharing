@@ -3,7 +3,7 @@ package org.mcclone.support;
 import java.util.Map;
 
 /**
- * Created by mcclone on 17-1-19.
+ * @author McClone
  */
 public interface TemplateGenerator<T> {
 

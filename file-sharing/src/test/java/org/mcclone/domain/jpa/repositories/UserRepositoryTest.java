@@ -10,7 +10,7 @@ import org.springframework.test.context.junit4.SpringRunner;
 import javax.annotation.Resource;
 
 /**
- * Created by McClone on 2017/1/21.
+ * @author McClone
  */
 @RunWith(SpringRunner.class)
 @SpringBootTest

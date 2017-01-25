@@ -6,7 +6,7 @@ import org.springframework.context.ApplicationEventPublisherAware;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by McClone on 2017/1/23.
+ * @author McClone
  */
 @Component
 public class ApplicationEventPublisherHolder implements ApplicationEventPublisherAware {

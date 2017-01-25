@@ -7,7 +7,7 @@ import org.springframework.security.crypto.codec.Utf8;
 import java.security.SecureRandom;
 
 /**
- * Created by mcclone on 17-1-14.
+ * @author McClone
  */
 public class DigestUtils {
 

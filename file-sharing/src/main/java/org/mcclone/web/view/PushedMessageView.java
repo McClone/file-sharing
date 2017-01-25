@@ -6,7 +6,7 @@ import lombok.Data;
 import java.util.Date;
 
 /**
- * Created by McClone on 2017/1/23.
+ * @author McClone
  */
 @Data
 public class PushedMessageView {

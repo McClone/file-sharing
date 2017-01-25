@@ -6,7 +6,7 @@ import org.springframework.security.core.userdetails.User;
 import java.util.Collection;
 
 /**
- * Created by mcclone on 17-1-14.
+ * @author McClone
  */
 public class UserPrincipal extends User {
     private static final long serialVersionUID = 3739408594407047059L;

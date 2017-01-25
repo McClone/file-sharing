@@ -7,7 +7,7 @@ import org.springframework.beans.BeanUtils;
 import org.springframework.stereotype.Component;
 
 /**
- * Created by mcclone on 17-1-14.
+ * @author McClone
  */
 @Component("folderViewMapper")
 public class FolderViewMapper extends SimpleViewMapper<Folder, FolderView> {

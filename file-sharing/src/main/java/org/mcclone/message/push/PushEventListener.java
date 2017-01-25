@@ -8,7 +8,7 @@ import org.springframework.stereotype.Component;
 import javax.annotation.Resource;
 
 /**
- * Created by McClone on 2017/1/22.
+ * @author McClone
  */
 @Component
 @Slf4j

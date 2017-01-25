@@ -19,7 +19,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
- * Created by McClone on 2017/1/22.
+ * @author McClone
  */
 @RestController
 @RequestMapping("/pushed")

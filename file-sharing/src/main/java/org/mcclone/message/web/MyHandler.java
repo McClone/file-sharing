@@ -8,7 +8,7 @@ import org.springframework.web.socket.handler.TextWebSocketHandler;
 import java.io.IOException;
 
 /**
- * Created by mcclone on 17-1-20.
+ * @author McClone
  */
 @Slf4j
 public class MyHandler extends TextWebSocketHandler {

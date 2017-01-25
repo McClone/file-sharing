@@ -8,7 +8,7 @@ import org.springframework.data.jpa.domain.support.AuditingEntityListener;
 import javax.persistence.*;
 
 /**
- * Created by McClone on 2017/1/23.
+ * @author McClone
  */
 @Entity
 @Table(name = "T_MESSAGE_PUSH")

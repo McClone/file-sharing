@@ -9,7 +9,7 @@ import org.springframework.web.socket.config.annotation.*;
 import org.springframework.web.socket.server.support.HttpSessionHandshakeInterceptor;
 
 /**
- * Created by mcclone on 17-1-20.
+ * @author McClone
  */
 @Configuration
 @EnableWebSocket

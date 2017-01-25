@@ -10,7 +10,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 /**
- * Created by mcclone on 17-1-12.
+ * @author McClone
  */
 @Controller
 @Slf4j

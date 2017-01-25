@@ -10,7 +10,7 @@ import javax.persistence.*;
 import java.io.Serializable;
 
 /**
- * Created by mcclone on 17-1-11.
+ * @author McClone
  */
 @Entity
 @Table(name = "T_FILE_ITEM")

@@ -1,6 +1,3 @@
-/**
- * Created by McClone on 2017/1/22.
- */
 $(function () {
     var $popover = $('#msg_popover');
     var $badge = $('#msg_badge');

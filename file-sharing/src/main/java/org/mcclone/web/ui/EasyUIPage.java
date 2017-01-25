@@ -5,7 +5,7 @@ import lombok.Data;
 import java.util.Collection;
 
 /**
- * Created by mcclone on 17-1-11.
+ * @author McClone
  */
 @Data
 public class EasyUIPage<T> {

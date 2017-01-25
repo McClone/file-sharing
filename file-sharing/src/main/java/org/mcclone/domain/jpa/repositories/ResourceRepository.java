@@ -4,7 +4,7 @@ import org.mcclone.domain.jpa.entity.Resource;
 import org.springframework.data.jpa.repository.JpaRepository;
 
 /**
- * Created by mcclone on 17-1-14.
+ * @author McClone
  */
 public interface ResourceRepository extends JpaRepository<Resource, String> {
 

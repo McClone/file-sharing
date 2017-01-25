@@ -7,7 +7,7 @@ import org.springframework.data.jpa.repository.JpaRepository;
 import org.springframework.data.jpa.repository.Query;
 
 /**
- * Created by mcclone on 17-1-11.
+ * @author McClone
  */
 public interface FolderRepository extends JpaRepository<Folder, String> {
 

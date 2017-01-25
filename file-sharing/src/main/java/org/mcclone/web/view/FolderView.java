@@ -7,7 +7,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 /**
- * Created by mcclone on 17-1-14.
+ * @author McClone
  */
 @Data
 public class FolderView implements Serializable {

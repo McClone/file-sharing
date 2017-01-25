@@ -10,7 +10,7 @@ import javax.annotation.Resource;
 import java.util.List;
 
 /**
- * Created by Administrator on 2017/1/24.
+ * @author McClone
  */
 @RestController
 @RequestMapping("/sessions")

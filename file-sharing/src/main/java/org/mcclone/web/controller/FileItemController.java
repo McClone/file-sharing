@@ -19,7 +19,7 @@ import java.io.File;
 import java.io.IOException;
 
 /**
- * Created by mcclone on 17-1-12.
+ * @author McClone
  */
 @RestController
 @RequestMapping("/fileItems")

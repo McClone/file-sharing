@@ -8,7 +8,7 @@ import org.springframework.core.io.ClassPathResource;
 import java.util.Map;
 
 /**
- * Created by mcclone on 17-1-19.
+ * @author McClone
  */
 public class GroovyTemplateGenerator implements TemplateGenerator<String> {
 

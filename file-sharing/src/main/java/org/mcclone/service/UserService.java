@@ -1,7 +1,7 @@
 package org.mcclone.service;
 
 /**
- * Created by mcclone on 17-1-15.
+ * @author McClone
  */
 public interface UserService {
 

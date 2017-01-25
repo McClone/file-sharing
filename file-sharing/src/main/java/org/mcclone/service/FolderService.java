@@ -5,7 +5,7 @@ import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 
 /**
- * Created by mcclone on 17-1-12.
+ * @author McClone
  */
 public interface FolderService {
 

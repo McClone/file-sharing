@@ -12,7 +12,7 @@ import org.springframework.security.web.util.matcher.AntPathRequestMatcher;
 import javax.annotation.Resource;
 
 /**
- * Created by mcclone on 17-1-13.
+ * @author McClone
  */
 @EnableWebSecurity
 public class WebSecurityConfig extends WebSecurityConfigurerAdapter {

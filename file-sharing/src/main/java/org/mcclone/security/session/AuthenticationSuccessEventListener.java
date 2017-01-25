@@ -11,7 +11,7 @@ import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.session.FindByIndexNameSessionRepository;
 
 /**
- * Created by Administrator on 2017/1/24.
+ * @author McClone
  */
 @Slf4j
 public class AuthenticationSuccessEventListener implements ApplicationListener<AuthenticationSuccessEvent> {

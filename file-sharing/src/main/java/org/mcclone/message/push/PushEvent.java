@@ -3,7 +3,7 @@ package org.mcclone.message.push;
 import org.springframework.context.ApplicationEvent;
 
 /**
- * Created by McClone on 2017/1/22.
+ * @author McClone
  */
 public class PushEvent extends ApplicationEvent {
 

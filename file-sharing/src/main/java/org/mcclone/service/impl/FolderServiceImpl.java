@@ -13,7 +13,7 @@ import org.springframework.util.Assert;
 import javax.annotation.Resource;
 
 /**
- * Created by mcclone on 17-1-12.
+ * @author McClone
  */
 @Service
 public class FolderServiceImpl implements FolderService {

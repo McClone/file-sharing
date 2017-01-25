@@ -4,7 +4,7 @@ import org.springframework.security.core.Authentication;
 import org.springframework.security.core.context.SecurityContextHolder;
 
 /**
- * Created by mcclone on 17-1-14.
+ * @author McClone
  */
 public abstract class SecurityUtils {
 

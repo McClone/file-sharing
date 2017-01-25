@@ -6,7 +6,7 @@ import org.springframework.stereotype.Component;
 import org.springframework.web.socket.messaging.SessionConnectedEvent;
 
 /**
- * Created by McClone on 2017/1/22.
+ * @author McClone
  */
 @Slf4j
 @Component

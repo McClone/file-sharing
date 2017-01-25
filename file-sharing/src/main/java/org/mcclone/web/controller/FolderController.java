@@ -18,7 +18,7 @@ import javax.annotation.Resource;
 import javax.validation.Valid;
 
 /**
- * Created by mcclone on 17-1-11.
+ * @author McClone
  */
 @RestController
 @RequestMapping("/folders")

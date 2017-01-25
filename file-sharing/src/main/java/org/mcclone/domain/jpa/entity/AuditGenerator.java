@@ -10,7 +10,7 @@ import javax.persistence.TemporalType;
 import java.util.Date;
 
 /**
- * Created by mcclone on 17-1-13.
+ * @author McClone
  */
 @MappedSuperclass
 public abstract class AuditGenerator extends IdGenerator {

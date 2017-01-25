@@ -3,7 +3,7 @@ package org.mcclone.web.ui;
 import lombok.Data;
 
 /**
- * Created by mcclone on 17-1-11.
+ * @author McClone
  */
 @Data
 public class EasyUIPageRequest {

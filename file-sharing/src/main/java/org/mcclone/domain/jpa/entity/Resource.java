@@ -11,7 +11,7 @@ import javax.persistence.Table;
 import java.io.Serializable;
 
 /**
- * Created by mcclone on 17-1-14.
+ * @author McClone
  */
 @Entity
 @Table(name = "T_RESOURCE")

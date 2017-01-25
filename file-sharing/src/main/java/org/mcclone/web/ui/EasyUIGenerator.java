@@ -6,7 +6,7 @@ import org.springframework.data.domain.Pageable;
 import org.springframework.data.domain.Sort;
 
 /**
- * Created by mcclone on 17-1-12.
+ * @author McClone
  */
 public class EasyUIGenerator {
 

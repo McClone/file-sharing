@@ -14,7 +14,7 @@ import org.springframework.web.bind.annotation.RestController;
 import javax.annotation.Resource;
 
 /**
- * Created by mcclone on 17-1-13.
+ * @author McClone
  */
 @RestController
 @RequestMapping("/users")
