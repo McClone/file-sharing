@@ -3,11 +3,12 @@ $(function () {
     var Chat = {};
 
     Chat.sendMessage = function () {
-        var message = $('#chat').val();
+        var $char = $('#chat');
+        var message = $char.val();
         if (message != '') {
             $('#console_table').append('<tr><td><span class="self_message">' + message + '</span></td></tr>');
             WS.send(message);
-            $('#chat').val('');
+            $char.val('');
         }
     };
 
