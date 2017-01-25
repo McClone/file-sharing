@@ -14,7 +14,7 @@
     <script src="http://cdn.bootcss.com/sockjs-client/1.1.1/sockjs.min.js"></script>
     <script src="http://cdn.bootcss.com/stomp.js/2.3.3/stomp.min.js"></script>
     <script type="text/javascript" src="/style/utils.js"></script>
-    <script type="text/javascript" src="/style/message.js"></script>
+    <script th:if="${username != null}" type="text/javascript" src="/style/message.js"></script>
     <script>
         $(function () {
             $(".content").on('click', function (e) {

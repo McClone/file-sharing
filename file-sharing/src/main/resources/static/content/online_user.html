@@ -4,8 +4,24 @@
     <thead>
     <tr>
         <th data-options="field:'username',width:100">用户名</th>
-        <th data-options="field:'password',width:50">踢人</th>
-        <th data-options="field:'user.id',width:50">聊天</th>
+        <th data-options="field:'kill',width:50,formatter:killUserFmt">踢人</th>
+        <!--<th data-options="field:'user.id',width:50">聊天</th>-->
     </tr>
     </thead>
 </table>
+<script>
+    function killUserFmt(value, row, index) {
+        return "<a href='#' onclick='killUser(\"" + row.username + "\");'>踢人</a>";
+    }
+
+    function killUser(username) {
+        $.ajaxUtils({
+            url: "/sessions/" + username,
+            type: 'DELETE',
+            success: function (data) {
+                $.messager.alert("提示", "踢人成功", "info");
+                $('#dg').datagrid('reload');
+            }
+        });
+    }
+</script>

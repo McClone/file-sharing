@@ -2,7 +2,6 @@ package org.mcclone.web.controller;
 
 import lombok.extern.slf4j.Slf4j;
 import org.mcclone.security.session.UserSessionRepositoryService;
-import org.springframework.boot.autoconfigure.condition.ConditionalOnBean;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
@@ -13,7 +12,6 @@ import java.util.List;
 /**
  * Created by Administrator on 2017/1/24.
  */
-@ConditionalOnBean(name = "redisUserSessionRepositoryService")
 @RestController
 @RequestMapping("/sessions")
 @Slf4j
