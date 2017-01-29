@@ -7,7 +7,6 @@ $(function () {
     if ($('#user_name').text()) {
         connect('/websocket', '/topic/pushed', handlerMessage);
     }
-
 });
 
 //处理推送的信息
@@ -51,10 +50,11 @@ function initPopover() {
 
 function connect(endpoint, topic, handler) {
     var socket = new SockJS(endpoint);
-    stompClient = Stomp.over(socket);
+    var stompClient = Stomp.over(socket);
     stompClient.connect({}, function (frame) {
         stompClient.subscribe(topic, function (data) {
             handler(data);
         });
+        stompClient.send("/app/hello", {}, 'admin');
     });
 }
